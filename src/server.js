@@ -6,7 +6,7 @@ import logger from 'morgan';
 
 import { errorHandler } from '@/app/middlewares/handlers';
 import { envMode } from '@/config';
-import { AuthRouter, BaseRouter } from '@/routes/router';
+import { AuthRouter, BaseRouter ,customerRouter} from '@/routes/router';
 
 // calling db
 import './config/db.connection';
@@ -24,7 +24,7 @@ app.use(logger(logMode));
 
 // ** all routes gathers here...
 app.use('/v1/auth', AuthRouter);
-// app.use('/v1/api', BaseRouter);
+app.use('/v1/api', BaseRouter, customerRouter);
 
 // ** Alway keep on the end
 app.use(errorHandler);
